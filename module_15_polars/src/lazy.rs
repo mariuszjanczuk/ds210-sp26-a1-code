@@ -21,10 +21,10 @@ fn main() {
         .filter(col("album").eq(lit("Ashen")));
 
     // Print the unoptimized query plan
-    println!("{}", output.explain(false).unwrap());
+    println!("Initial Plan: {}", output.explain(false).unwrap());
 
     // Print the automatically ***optimized*** query plan
-    println!("{}", output.explain(true).unwrap());
+    println!("Optimized Plan: {}", output.explain(true).unwrap());
 
     // Ask polars to run the query (with optimizations).
     let result = output.collect().unwrap();

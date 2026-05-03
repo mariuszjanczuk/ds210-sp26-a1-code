@@ -28,12 +28,10 @@ fn main() {
         .equal("Ashen");
     let filtered_data = data.filter(&condition).unwrap();
 
-    // Group by the band and album columns, then compute the average rating per
-    // group.
-    // Given the filter, we could even do away with the group by and just compute
-    // the overall mean!
+    // Group by the band and album columns, then compute the average rating per group.
+    // Given the filter, can we do away with the group by and just compute the overall mean?
     let groups =
-        filtered_data.group_by(["band", "album"]).unwrap();
+        filtered_data.group_by(["band"]).unwrap();
     let result =
         groups.select(["rating"]).mean().unwrap();
 
